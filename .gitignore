@@ -1,0 +1,17 @@
+# Build output
+bin/
+obj/
+
+# Secrets
+secrets.json
+
+# VS Code local settings
+.vscode/settings.json
+
+# Visual Studio
+*.user
+*.suo
+.vs/
+
+# Claude Code local settings
+.claude/

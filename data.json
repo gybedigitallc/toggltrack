@@ -1,0 +1,26 @@
+{
+    "clients": [
+        {
+            "client": "GybeDigital",
+            "projects": {
+                "Marina": 217165158,
+                "Training": 217165358
+            }
+        },
+        {
+            "client": "BISSELL",
+            "projects": {
+                "IOMS": 217165342,
+                "KTLO": 217165346,
+                "Outlet Store": 217165181,
+                "Partner": 217165162,
+                "PQA": 217165220,
+                "Quality": 217165224,
+                "Sales Order History": 217165229,
+                "Supplier": 217165166,
+                "Training": 217165351,
+                "Triage": 217165233
+            }
+        }
+    ]
+}
