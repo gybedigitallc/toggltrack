@@ -3,17 +3,19 @@ using System.Text.Json.Serialization;
 
 public static class DataLoader
 {
-    public static IReadOnlyList<Client> Parse(string json)
+    public static AppData Parse(string json)
     {
         var root = JsonSerializer.Deserialize<RootDto>(json, JsonOptions)
             ?? throw new InvalidOperationException("Failed to parse JSON.");
 
-        return root.Clients
+        var clients = root.Clients
             .Select(c => new Client(c.Client, c.Projects))
             .ToList();
+
+        return new AppData(root.WorkspaceId, clients);
     }
 
-    public static IReadOnlyList<Client> Load(string path) =>
+    public static AppData Load(string path) =>
         Parse(File.ReadAllText(path));
 
     private static readonly JsonSerializerOptions JsonOptions = new()
@@ -21,6 +23,6 @@ public static class DataLoader
         PropertyNameCaseInsensitive = true
     };
 
-    private record RootDto(List<ClientDto> Clients);
+    private record RootDto(int WorkspaceId, List<ClientDto> Clients);
     private record ClientDto(string Client, Dictionary<string, int> Projects);
 }

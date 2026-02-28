@@ -6,10 +6,10 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/bin/Debug/net10.0/TogglTrack.dll",
+            "program": "${workspaceFolder}/src/TogglTrack/bin/Debug/net10.0/TogglTrack.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
+            "console": "externalTerminal",
             "stopAtEntry": false
         }
     ]
