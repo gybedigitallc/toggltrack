@@ -1,9 +1,12 @@
 using Xunit;
 
+namespace TogglTrack.Tests;
+
 public class DataLoaderTests
 {
     private const string SampleJson = """
         {
+            "workspaceId": 123,
             "clients": [
                 {
                     "client": "GybeDigital",
@@ -27,19 +30,19 @@ public class DataLoaderTests
     [Fact]
     public void Parse_ReturnsClientNames()
     {
-        var clients = DataLoader.Parse(SampleJson);
+        var data = DataLoader.Parse(SampleJson);
 
-        Assert.Equal(2, clients.Count);
-        Assert.Equal("GybeDigital", clients[0].Name);
-        Assert.Equal("BISSELL", clients[1].Name);
+        Assert.Equal(2, data.Clients.Count);
+        Assert.Equal("GybeDigital", data.Clients[0].Name);
+        Assert.Equal("BISSELL", data.Clients[1].Name);
     }
 
     // Cycle 2: Parse returns projects for each client
     [Fact]
     public void Parse_ReturnsProjectsForClient()
     {
-        var clients = DataLoader.Parse(SampleJson);
-        var gybe = clients[0];
+        var data = DataLoader.Parse(SampleJson);
+        var gybe = data.Clients[0];
 
         Assert.Equal(2, gybe.Projects.Count);
         Assert.Equal(217165158, gybe.Projects["Marina"]);
@@ -50,11 +53,20 @@ public class DataLoaderTests
     [Fact]
     public void Parse_HandlesBothClients()
     {
-        var clients = DataLoader.Parse(SampleJson);
-        var bissell = clients[1];
+        var data = DataLoader.Parse(SampleJson);
+        var bissell = data.Clients[1];
 
         Assert.Equal(2, bissell.Projects.Count);
         Assert.Equal(217165342, bissell.Projects["IOMS"]);
         Assert.Equal(217165346, bissell.Projects["KTLO"]);
+    }
+
+    // Cycle 4: Parse returns workspaceId
+    [Fact]
+    public void Parse_ReturnsWorkspaceId()
+    {
+        var data = DataLoader.Parse(SampleJson);
+
+        Assert.Equal(123, data.WorkspaceId);
     }
 }

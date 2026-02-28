@@ -1,5 +1,7 @@
 using Xunit;
 
+namespace TogglTrack.Tests;
+
 public class SecretsLoaderTests
 {
     private const string SampleJson = """

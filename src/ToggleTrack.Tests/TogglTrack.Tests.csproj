@@ -14,10 +14,11 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.12.0" />
+    <PackageReference Include="Spectre.Console.Testing" Version="0.49.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TogglTrack.csproj" />
+    <ProjectReference Include="..\TogglTrack\TogglTrack.csproj" />
   </ItemGroup>
 
 </Project>
